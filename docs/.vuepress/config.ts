@@ -13,6 +13,17 @@ export default defineUserConfig({
   //主题
   theme: hopeTheme({
     logo: '/cat.png',
-    favicon: '/favicon.ico'
+    favicon: '/favicon.ico',
+    //启用图标
+    iconAssets: 'iconfont',
+    //顶部导航栏（居中显示）
+    navbar: [
+      '/',
+      {
+        text: '指南',
+        icon: 'stack',
+        link: '/guide.md'
+      }
+    ]
   })
 });
