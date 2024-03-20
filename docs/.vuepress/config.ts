@@ -22,11 +22,26 @@ export default defineUserConfig({
       {
         text: '指南',
         icon: 'stack',
-        link: '/guide.md'
+        link: '/guide'
       }
     ],
+    // //侧边栏（不设置默认加载所有的更好呀，后期再配置吧）
+    // sidebar: {
+    //   "/": [
+    //     {
+    //       text: 'Vue',
+    //       prefix: 'vue/',
+    //       children: ['vuehope']
+    //     }
+    //   ]
+    // },
     //插件
     plugins: {
+      //搜索
+      search: {
+        isSearchable: (page) => page.path !== "/",
+        maxSuggestions: 10
+      },
       //markdown增强插件
       mdEnhance: {
         //启动代码块

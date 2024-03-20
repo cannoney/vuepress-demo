@@ -17,6 +17,7 @@ title: vuepress
 | vuepress-theme-hope | 主题   |
 | typescript          | 脚本   |
 | @vue/repl          | vue交互演示   |
+| @vuepress/plugin-search         | 搜索   |
 
 > - [table to md](https://tableconvert.com/zh-cn/markdown-generator)
 
@@ -87,7 +88,7 @@ export default defineUserConfig({
 });
 ```
 
-## 目录结构
+## 目录结构 todo
 
 ```text
 ├─ docs
@@ -100,15 +101,29 @@ export default defineUserConfig({
 
 > - 生成tree格式结构: [Folder Explorer tool](https://github.com/d2-projects/folder-explorer/releases)
 
-## 部署
+## 部署 todo
 
 ## Vue演示
 
-:::code-tabs#shell
-@tab pnpm
+:::code-tabs
+@tab pnpm安装
 
 ```bash
 pnpm add -D @vue/repl
+```
+
+@tab config主题中启用
+
+```ts title='docs/.vuepress/config.ts'
+  //插件
+  plugins: {
+    mdEnhance: {
+      //启动代码块
+      codetabs: true,
+      //启动vue交互演示
+      vuePlayground: true
+    }
+  }
 ```
 
 :::
@@ -126,18 +141,47 @@ pnpm add -D @vue/repl
 <script setup>
 import { ref } from "vue";
 
-const msg = ref("你好交互演示!");
+const msg = ref("demo");
 </script>
 ```
 
 :::
+
+## 搜索插件
+
+:::code-tabs
+@tab pnpm安装
+
+```bash
+pnpm i -D @vuepress/plugin-search@next
+```
+
+@tab config主题中启用
+
+```ts title='docs/.vuepress/config.ts'
+  //插件
+  plugins: {
+    //搜索
+    search: {
+      isSearchable: (page) => page.path !== "/",
+      maxSuggestions: 10
+    }
+  }
+```
+
+:::
+
+- 热键 `s`
+
+> - [主题插件 | vuepress-theme-hope](https://theme-hope.vuejs.press/zh/config/plugins/intro.html)
+> - [search | VuePress 生态系统](https://ecosystem.vuejs.press/zh/plugins/search.html)
 
 ## 小技巧
 
 ### 提示
 
 ```text
-:::tip 提示
+:::{info | note | tip | warning | caution | details} TEXT
 XXXX
 :::
 ```
