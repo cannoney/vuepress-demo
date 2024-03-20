@@ -16,6 +16,7 @@ title: vuepress
 | vite                | 打包工具 |
 | vuepress-theme-hope | 主题   |
 | typescript          | 脚本   |
+| @vue/repl          | vue交互演示   |
 
 > - [table to md](https://tableconvert.com/zh-cn/markdown-generator)
 
@@ -101,6 +102,36 @@ export default defineUserConfig({
 
 ## 部署
 
+## Vue演示
+
+:::code-tabs#shell
+@tab pnpm
+
+```bash
+pnpm add -D @vue/repl
+```
+
+:::
+
+::: vue-playground Vue 交互演示
+
+@file App.vue
+
+```vue
+<template>
+  <h1>{{ msg }}</h1>
+  <input v-model="msg" />
+</template>
+
+<script setup>
+import { ref } from "vue";
+
+const msg = ref("你好交互演示!");
+</script>
+```
+
+:::
+
 ## 小技巧
 
 ### 提示
@@ -113,3 +144,8 @@ XXXX
 
 > - [提示容器 | vuepress-theme-hope](https://theme-hope.vuejs.press/zh/guide/markdown/hint.html)
 > - [MdEnhance 插件配置 | vuepress-theme-hope](https://theme-hope.vuejs.press/zh/config/plugins/md-enhance.html#hint)
+
+## 参考
+
+- [介绍 | VuePress](https://v2.vuepress.vuejs.org/zh/guide/introduction.html)
+- [指南 | vuepress-theme-hope](https://theme-hope.vuejs.press/zh/guide/)

@@ -24,6 +24,17 @@ export default defineUserConfig({
         icon: 'stack',
         link: '/guide.md'
       }
-    ]
+    ],
+    //插件
+    plugins: {
+      //markdown增强插件
+      mdEnhance: {
+        //启动代码块
+        codetabs: true,
+        //启动vue交互演示
+        vuePlayground: true
+      }
+    }
+
   })
 });
