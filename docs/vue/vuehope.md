@@ -109,6 +109,8 @@ export default defineUserConfig({
 github | repos | setting | pages
 
 - [GitHub Pages 文档](https://docs.github.com/zh/pages)
+- [GitHub Actions 入门教程 - 阮一峰的网络日志](https://www.ruanyifeng.com/blog/2019/09/getting-started-with-github-actions.html)
+- [Deploy to GitHub Pages · Actions · GitHub Marketplace · GitHubgit-commitgit-commit](https://github.com/marketplace/actions/deploy-to-github-pages)
 
 @tab GitHub Actions 自定义工作流
 
