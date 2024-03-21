@@ -11,8 +11,8 @@ title: vuepress
 
 | 组件                | 说明   |
 |---------------------|------|
-| vue3                | √    |
-| vuepress2           | √    |
+| vue~3~                | √    |
+| vuepress~2~           | √    |
 | vite                | 打包工具 |
 | vuepress-theme-hope | 主题   |
 | typescript          | 脚本   |
@@ -39,7 +39,7 @@ pnpm install -D vuepress@next vue
 pnpm install -D @vuepress/bundler-vite@next vuepress-theme-hope
 
 ## 4、创建主页
-mkdir -p docs/.vuepress && echo '# Hello VuePress' > docs/README.md
+mkdir -p docs/.vuepress && echo '# Hello VuePress' > docs/index.md
 
 ## 5、创建配置文件 -- 待补充
 touch docs/.vuepress/config.ts
@@ -94,7 +94,7 @@ export default defineUserConfig({
 ├─ docs
 │  ├─ .vuepress
 │  │  └─ config.ts (配置文件)
-│  └─ README.md (首页)
+│  └─ index.md (首页)
 ├─ .gitignore
 └─ package.json
 ```
@@ -102,6 +102,21 @@ export default defineUserConfig({
 > - 生成tree格式结构: [Folder Explorer tool](https://github.com/d2-projects/folder-explorer/releases)
 
 ## 部署 todo
+
+:::tabs
+@tab github部署
+
+github | repos | setting | pages
+
+- [GitHub Pages 文档](https://docs.github.com/zh/pages)
+
+@tab GitHub Actions 自定义工作流
+
+```yaml
+<!-- @include: ../../.github/workflows/deploy-docs.yml -->
+```
+
+:::
 
 ## Vue演示
 
@@ -188,6 +203,10 @@ XXXX
 
 > - [提示容器 | vuepress-theme-hope](https://theme-hope.vuejs.press/zh/guide/markdown/hint.html)
 > - [MdEnhance 插件配置 | vuepress-theme-hope](https://theme-hope.vuejs.press/zh/config/plugins/md-enhance.html#hint)
+
+### router
+
+> 站内的每一个文件夹下的 README.md 或者 index.md 文件都会被 ==自动编译== 为 index.html，对应的链接将被视为 /。
 
 ## 参考
 

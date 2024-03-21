@@ -47,7 +47,16 @@ export default defineUserConfig({
         //启动代码块
         codetabs: true,
         //启动vue交互演示
-        vuePlayground: true
+        vuePlayground: true,
+        //选项卡
+        tabs: true,
+        //上下角标 (^x^ ~x~)
+        sup: true,
+        sub: true,
+        //标记( ==xx== )
+        mark: true,
+        //导入文件
+        include: true
       }
     }
 
