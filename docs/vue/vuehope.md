@@ -101,22 +101,38 @@ export default defineUserConfig({
 
 > - 生成tree格式结构: [Folder Explorer tool](https://github.com/d2-projects/folder-explorer/releases)
 
-## 部署 todo
+## 部署
 
 :::tabs
 @tab github部署
 
-github | repos | setting | pages
+1. 项目中添加自定义工作流： `.github/workflows/deploy-docs.yml`
+1. Setting | GitHub Pages | deploy from branch：gh-pages
 
 - [GitHub Pages 文档](https://docs.github.com/zh/pages)
 - [GitHub Actions 入门教程 - 阮一峰的网络日志](https://www.ruanyifeng.com/blog/2019/09/getting-started-with-github-actions.html)
-- [Deploy to GitHub Pages · Actions · GitHub Marketplace · GitHubgit-commitgit-commit](https://github.com/marketplace/actions/deploy-to-github-pages)
+- [一篇带你用 VuePress + Github Pages 搭建博客 - 掘金](https://juejin.cn/post/7041134607869149215)
 
 @tab GitHub Actions 自定义工作流
 
 ```yaml
 <!-- @include: ../../.github/workflows/deploy-docs.yml -->
 ```
+
+:::
+
+- 注意工作流中的action版本：(@v{major-version})
+:::info ！！！
+
+> deploy-gh-pages  
+> Node.js 16 actions are deprecated. Please update the following actions to use Node.js 20: actions/checkout@v3, pnpm/action-setup@v2, actions/setup-node@v3. For more information see: [GitHub Actions: Transitioning from Node 16 to Node 20](https://github.blog/changelog/2023-09-22-github-actions-transitioning-from-node-16-to-node-20/).
+
+ ==检查版本==
+
+- 安装PNPM `pnpm/action-setup@v3`: [GitHub - pnpm/action-setup](https://github.com/pnpm/action-setup)
+- 安装NODE `actions/setup-node@v4`: [GitHub - actions/setup-node](https://github.com/actions/setup-node)
+- 检出分支 `actions/checkout@v4`: [GitHub - actions/checkout](https://github.com/actions/checkout)
+- 部署 `JamesIves/github-pages-deploy-action@v4`: [GitHub - JamesIves/github-pages-deploy-action](https://github.com/JamesIves/github-pages-deploy-action)    [Deploy to GitHub Pages · Actions · GitHub Marketplace](https://github.com/marketplace/actions/deploy-to-github-pages)
 
 :::
 
