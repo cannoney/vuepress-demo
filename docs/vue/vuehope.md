@@ -108,7 +108,9 @@ export default defineUserConfig({
 
 1. 项目中添加自定义工作流： `.github/workflows/deploy-docs.yml`
 1. Setting | GitHub Pages | deploy from branch：gh-pages
+1. 配置base=repo。[发布后的站点](https://cannoney.github.io/vuepress-demo/)
 
+- [部署项目 | vuepress-theme-hope](https://theme-hope.vuejs.press/zh/get-started/deploy.html)
 - [GitHub Pages 文档](https://docs.github.com/zh/pages)
 - [GitHub Actions 入门教程 - 阮一峰的网络日志](https://www.ruanyifeng.com/blog/2019/09/getting-started-with-github-actions.html)
 - [一篇带你用 VuePress + Github Pages 搭建博客 - 掘金](https://juejin.cn/post/7041134607869149215)

@@ -3,7 +3,7 @@ import {hopeTheme} from 'vuepress-theme-hope'
 import {defineUserConfig} from 'vuepress'
 
 export default defineUserConfig({
-  base: '/',
+  base: '/vuepress-demo/',
 
   title: 'vue docs',
   description: 'demo',
