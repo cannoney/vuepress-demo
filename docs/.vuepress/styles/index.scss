@@ -1,0 +1,26 @@
+//自定义样式
+//导航栏：站点名称
+.vp-site-name {
+  font-style: italic;
+  //字体渐变色
+  background-image: linear-gradient(to right, violet, var(--theme-color-dark));
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+//标题h2
+h2 {
+  border-bottom: solid 3px var(--theme-color-light);
+}
+h2::before {
+  content: '.§.';
+  margin-right: 17px;
+  color: var(--theme-color);
+}
+.hd2::before {
+  content: none;
+}
+.hd2 .iconfont {
+  margin-right: 8px;
+  font-size: 1em;
+  color: var(--theme-color);
+}

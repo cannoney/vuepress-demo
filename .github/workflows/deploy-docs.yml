@@ -17,6 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
+        # @see https://github.com/actions/checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -24,13 +25,14 @@ jobs:
           # submodules: true
 
       - name: Install pnpm
+        # @see https://github.com/pnpm/action-setup
         uses: pnpm/action-setup@v3
         with:
           run_install: true
           version: 8
 
-
       - name: Setup Node.js
+        # @see https://github.com/actions/setup-node
         uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -44,6 +46,9 @@ jobs:
           > docs/.vuepress/dist/.nojekyll
 
       - name: Deploy Docs
+        # @see https://github.com/actions/deploy-pages
+        # uses: actions/deploy-pages@v4
+        # @see https://github.com/JamesIves/github-pages-deploy-action
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           # This is the branch where the docs are deployed to

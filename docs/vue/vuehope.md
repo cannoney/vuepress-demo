@@ -11,8 +11,8 @@ title: vuepress
 
 | 组件                | 说明   |
 |---------------------|------|
-| vue~3~                | √    |
-| vuepress~2~           | √    |
+| vue <Badge text="v3" /> | √    |
+| vuepress <Badge text="v2" /> | √    |
 | vite                | 打包工具 |
 | vuepress-theme-hope | 主题   |
 | typescript          | 脚本   |
@@ -110,7 +110,7 @@ export default defineUserConfig({
 1. Setting | GitHub Pages | deploy from branch：gh-pages
 1. 配置base=repo。[发布后的站点](https://cannoney.github.io/vuepress-demo/)
 
-- [部署项目 | vuepress-theme-hope](https://theme-hope.vuejs.press/zh/get-started/deploy.html)
+- [部署项目 | vuepress-theme-hope](https://theme-hope.vuejs.press/zh/get-started/deploy.html) [部署 | VuePress](https://vuejs.press/zh/guide/deployment.html#github-pages)
 - [GitHub Pages 文档](https://docs.github.com/zh/pages)
 - [GitHub Actions 入门教程 - 阮一峰的网络日志](https://www.ruanyifeng.com/blog/2019/09/getting-started-with-github-actions.html)
 - [一篇带你用 VuePress + Github Pages 搭建博客 - 掘金](https://juejin.cn/post/7041134607869149215)
@@ -211,15 +211,77 @@ pnpm i -D @vuepress/plugin-search@next
 > - [主题插件 | vuepress-theme-hope](https://theme-hope.vuejs.press/zh/config/plugins/intro.html)
 > - [search | VuePress 生态系统](https://ecosystem.vuejs.press/zh/plugins/search.html)
 
+## 自定义样式
+
+:::info
+
+样式文件：`docs/.vuepress/styles/index.scss`
+
+```scss
+//导航栏：站点名称
+.vp-site-name {
+  font-style: italic;
+  //字体渐变色
+  background-image: linear-gradient(to right, violet, var(--theme-color-dark));
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+```
+
+- [样式配置 | vuepress-theme-hope](https://theme-hope.vuejs.press/zh/config/style.html#index-scss)
+- [字体渐变色](https://segmentfault.com/a/1190000012797252)
+
+:::
+
+## 自定义组件
+
+<hd2>显示标题2组件</hd2>
+
+:::code-tabs
+@tab 定义组件  `.vuepress/components/hd2.vue`
+
+```vue
+<template>
+  <h2 class="hd2">
+    <span class="icon iconfont icon-leaf"></span>
+    <slot></slot>
+  </h2>
+</template>
+```
+
+@tab 客户端配置 `.vuepress/client.ts`
+
+```ts
+import { defineClientConfig } from 'vuepress/client'
+import hd2 from './components/hd2.vue'
+
+export default defineClientConfig({
+  enhance({ app, router, siteData }) {
+    app.component("hd2", hd2);
+  }
+})
+```
+
+@tab md页面引用
+
+```md
+<hd2>显示标题2组件</hd2>
+```
+
+:::
+
+:::caution 问题
+自定义的h2标签不能被识别为toc目录了 ！！！ :scream: :cry:
+:::
+
+- [全局组件 | vuepress-theme-hope](https://theme-hope.vuejs.press/zh/guide/component/global.html#%E9%80%9A%E8%BF%87-clientconfigfile-%E6%B3%A8%E5%86%8C)
+- [人物 Emoji | vuepress-theme-hope](https://theme-hope.vuejs.press/zh/cookbook/markdown/emoji/people.html)
+
+pnpm i -D @vuepress/plugin-register-components@next
+
 ## 小技巧
 
 ### 提示
-
-```text
-:::{info | note | tip | warning | caution | details} TEXT
-XXXX
-:::
-```
 
 > - [提示容器 | vuepress-theme-hope](https://theme-hope.vuejs.press/zh/guide/markdown/hint.html)
 > - [MdEnhance 插件配置 | vuepress-theme-hope](https://theme-hope.vuejs.press/zh/config/plugins/md-enhance.html#hint)
