@@ -1,6 +1,6 @@
 ---
 icon: vue
-title: vuepress
+title: vuepress + theme-hope
 ---
 
 ::: tip 友情提示
@@ -235,7 +235,8 @@ pnpm i -D @vuepress/plugin-search@next
 
 ## 自定义组件
 
-<hd2>显示标题2组件</hd2>
+<hd2 icon='activity'>显示标题2组件</hd2>
+<hd2>显示默认图标</hd2>
 
 :::code-tabs
 @tab 定义组件  `.vuepress/components/hd2.vue`

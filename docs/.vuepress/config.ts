@@ -3,10 +3,13 @@ import {hopeTheme} from 'vuepress-theme-hope'
 import {defineUserConfig} from 'vuepress'
 
 export default defineUserConfig({
+  //application context
   base: '/vuepress-demo/',
 
   title: 'vue docs',
   description: 'demo',
+  //中文
+  lang: 'zh-CN',
 
   //打包工具
   bundler: viteBundler(),

@@ -1,4 +1,11 @@
 //自定义样式
+//宽屏-加宽内容区域
+@media (min-width: 1440px) {
+  :root {
+    --content-width: 980px;
+  }
+}
+
 //导航栏：站点名称
 .vp-site-name {
   font-style: italic;
@@ -15,6 +22,10 @@ h2::before {
   content: '.§.';
   margin-right: 17px;
   color: var(--theme-color);
+}
+
+.hd2 {
+  border-color: lightcyan;
 }
 .hd2::before {
   content: none;
