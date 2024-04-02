@@ -60,6 +60,10 @@ export default defineUserConfig({
         mark: true,
         //导入文件
         include: true
+      },
+      //内置组件
+      components: {
+        components: ['BiliBili']
       }
     }
 

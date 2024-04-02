@@ -280,6 +280,38 @@ export default defineClientConfig({
 
 pnpm i -D @vuepress/plugin-register-components@next
 
+## 视频
+
+:::code-tabs
+@tab 启用内置的组件config.ts
+
+```ts title='docs/.vuepress/config.ts'
+theme: hopeTheme({
+    plugins: {
+      //内置组件
+      components: {
+        components: ['BiliBili']
+      }
+    }
+  })
+```
+
+@tab bilibli视频
+
+```md
+<BiliBili bvid="BV17j411J7EC" autoplay="true" time="196" />
+
+//参考：https://www.bilibili.com/video/BV17j411J7EC/?p=31&share_source=copy_web&vd_source=68fedcc5f7d2318d437e3898d66ed834&t=196
+```
+
+:::
+
+<BiliBili bvid="BV17j411J7EC" autoplay="true" time="196" />
+
+- [内置组件 | vuepress-theme-hope](https://theme-hope.vuejs.press/zh/guide/component/built-in.html#bilibili)
+- [BiliBili | 组件库](https://plugin-components.vuejs.press/zh/guide/media/bili-bili.html)
+- bvid 就是URL的video/参数：[【科普】什么是BVID/epid？附攻略和查询/使用方法 - 哔哩哔哩](https://www.bilibili.com/read/cv16499284/)
+
 ## 小技巧
 
 ### 提示

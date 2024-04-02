@@ -13,6 +13,17 @@ title: spring boot3
 
 - [Getting Started | Building REST services with Spring](https://spring.io/guides/tutorials/rest)
 
+## 问题
+
+### 端口被占用
+
+```bash
+# 查找端口对应的进程PID
+netstat -ano | findstr 8080
+# 终止进程
+taskkill -f /pid xxx
+```
+
 ## 第三方集成工具
 
 ### hutool
