@@ -136,6 +136,25 @@ pnpm i vue-router
 - [Vue3 路由 | 菜鸟教程](https://www.runoob.com/vue3/vue3-routing.html)
 - [Vue3 之 Router 的理解 - 知乎](https://zhuanlan.zhihu.com/p/659631118)
 
+## 刷新后导航菜单保持当前选中
+
+```ts
+//菜单的属性key就是路径，如 key: '/user'
+const current = ref<string[]>(["/"]);
+//导航菜单点击跳转
+const router = useRouter();
+const menuClicked = ({ key }: { key: string }) => {
+  console.log(key);
+  router.push({
+    path: key,
+  });
+};
+//刷新页面后选中与路径对应的菜单
+router.afterEach((to) => {
+  current.value = [to.path];
+});
+```
+
 ## axios
 
 :::code-tabs
@@ -145,7 +164,55 @@ pnpm i vue-router
 pnpm i axios
 ```
 
-@tab pnpm 跨域配置
+@tab 定义 -- utils/http.ts
+
+```ts
+import axios, { type AxiosInstance } from "axios";
+
+//创建实例
+const myAxios: AxiosInstance = axios.create({
+  baseURL: "http://localhost:8081",
+  timeout: 10000,
+  withCredentials: true,
+});
+//请求拦截器
+myAxios.interceptors.request.use(
+  (config) => {
+    //请求前的处理
+    return config;
+  },
+  (error) => {
+    //错误的处理
+    return Promise.reject(error);
+  }
+);
+
+//响应拦截器
+myAxios.interceptors.response.use(
+  (response) => {
+    //2xx成功响应后的处理
+    return response;
+  },
+  (error) => {
+    //错误处理
+    return Promise.reject(error);
+  }
+);
+
+export default myAxios;
+```
+
+@tab 业务引用 -- xxx.ts
+
+```ts
+//列表
+export const getUsers = async () => {
+  const { data } = await myAxios.get("/list");
+  return data.result;
+};
+```
+
+@tab 跨域配置 -- vite.config.ts
 
 ```ts
 export default defineConfig({
@@ -166,25 +233,6 @@ export default defineConfig({
 
 - [Server Options | Vite](https://vitejs.dev/config/server-options.html#server-cors)
 - [Vue 3.0 + vite + axios 出现跨域问题如何解决？ - 知乎](https://www.zhihu.com/question/593673574/answer/2968787413)
-
-## 刷新后导航菜单保持当前选中
-
-```
-//菜单的属性key就是路径，如 key: '/user'
-const current = ref<string[]>(['/'])
-//导航菜单点击跳转
-const router = useRouter()
-const menuClicked = ({ key }: { key: string }) => {
-  console.log(key)
-  router.push({
-    path: key,
-  })
-}
-//刷新页面后选中与路径对应的菜单
-router.afterEach((to) => {
-  current.value = [to.path]
-})
-```
 
 ## 状态管理
 
@@ -212,6 +260,8 @@ export const useUserStore = defineStore("user", () => {
   return { getCurrentUser, setCurrentUser, currentUser };
 });
 ```
+
+:::
 
 ## 导航栏获取用户状态（保持响应式）
 
@@ -344,8 +394,6 @@ const { msg } = defineProps(["msg"]);
 
 ```vue
 <ACopy :msg="record.name" />
-
-import ACopy from '../tools/ACopy.vue'
 ```
 
 :::
